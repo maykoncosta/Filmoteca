@@ -1,0 +1,6 @@
+projeto pré-configurado com as seguintes configurações:
+    angularJS 1.8.2
+    gulp 3.9.1,
+    node 8.15.1,
+    consumo de API,
+    arquitetura atual com base em separação de módulos.

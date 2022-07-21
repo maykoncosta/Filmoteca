@@ -1,0 +1,25 @@
+<div class="album py-5 bg-light">
+    <div class="row container">
+            <div class="col-md-3"  
+            ng-repeat="filme in ctrl.filmes"
+            ng-if="filme.poster_path">
+              <div class="card mb-4 shadow-sm">
+                <img class="img-card" 
+                ng-src="{{ctrl.urlImg}}{{filme.poster_path}}" >
+                <div class="card-body">
+                  <p class="card-text">{{filme.overview}}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" 
+                      class="btn btn-sm btn-outline-secondary"
+                      ng-click="ctrl.getProximosFilmes()">View</button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div>
+</div>
+<paginacao-app></paginacao-app>
+

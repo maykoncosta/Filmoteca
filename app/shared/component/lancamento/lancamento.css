@@ -1,0 +1,25 @@
+.carousel{
+    margin-top: 55px;
+}
+
+.carousel-item{
+    text-align: center;
+}
+
+.carousel-item img{
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.carousel-control-prev {
+    background-color: black !important;
+}
+
+.carousel-control-next {
+    background-color: black !important;
+}
+
+.card-lancamento{
+    min-height: 506px;
+}
