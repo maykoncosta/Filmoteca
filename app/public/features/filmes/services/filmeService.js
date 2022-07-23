@@ -3,6 +3,7 @@ angular.module('app').service("FilmeService", function($http, env){
     const vm = this;
     vm.categoria = "";
     vm.tipo = "";
+    vm.idFilme = 616037;
 
     let params = {
         api_key: "e2381bd86126e0a731c05b2ead45773e",
@@ -39,6 +40,29 @@ angular.module('app').service("FilmeService", function($http, env){
             vm.tipo = "movie"
         }
          return $http.get(`${urlBase}/${vm.categoria}/${vm.tipo}`,{
+             params,
+         })
+     }
+
+     vm.getDetalhesFilme = (idFilme) => {
+        vm.categoria = "movie";
+         return $http.get(`${urlBase}/${vm.categoria}/${idFilme}`,{
+             params,
+         })
+     }
+
+     vm.getCreditos = (idFilme) => {
+        vm.categoria = "movie";
+        vm.tipo = "credits"
+         return $http.get(`${urlBase}/${vm.categoria}/${idFilme}/${vm.tipo}`,{
+             params,
+         })
+     }
+
+     vm.getVideos = (idFilme) => {
+        vm.categoria = "movie";
+        vm.tipo = "videos"
+         return $http.get(`${urlBase}/${vm.categoria}/${idFilme}/${vm.tipo}`,{
              params,
          })
      }

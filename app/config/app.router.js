@@ -7,6 +7,10 @@ angular.module("app").config([
       url: "/home",
       templateUrl: "public/home/home.template.html"
     }),
+    $stateProvider.state('detalhesFilmes', {
+      url: "/filme",
+      templateUrl: "public/features/detalhesFilmes/detalhesFilmes.html"
+    })
     $urlRouterProvider.otherwise("/home");
   },
 ]);

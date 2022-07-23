@@ -12,6 +12,7 @@ function HomeController($state, filmeService){
     vm.urlImg = "https://image.tmdb.org/t/p/w500";
     vm.nomeFilme = "";
     vm.pagina = 1;
+    vm.filmeId;
 
 vm.getFilmes = () => {
     filmeService
@@ -67,6 +68,12 @@ vm.getProximosFilmes = () => {
     .catch((error) => {
         console.log(error);
     })
+}
+
+vm.detalhesFilme = (filme) =>{
+    vm.filmeId = filme.id;
+    filmeService.idFilme = vm.filmeId;
+    $state.go('detalhesFilmes', {filmeId: vm.filmeId});
 }
 
 vm.getFilmes();
