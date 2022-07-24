@@ -2,7 +2,9 @@
     <nav aria-label="...">
       <ul class="pagination">
         <li class="page-item">
-          <a class="page-link">Previous</a>
+          <button class="page-link" 
+          ng-click="ctrl.getFilmesAnteriores()"
+          ng-if="ctrl.primeiraPagina">Previous</button>
         </li>
         <li class="page-item">
           <button class="page-link" ng-click="ctrl.getProximosFilmes()">Next</button>

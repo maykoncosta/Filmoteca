@@ -1,0 +1,12 @@
+<section>
+    <h4 class="elenco-principal">Elenco principal:</h4>
+    <div class="row">
+      <div ng-repeat="elenco in ctrl.elenco | limitTo : 8" class="card card-elenco">
+        <img ng-src="{{ctrl.urlImg}}{{elenco.profile_path}}" class="card-img-top img-elenco" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{elenco.name}}</h5>
+          <p class="card-text text-elenco">{{elenco.character}}</p>
+        </div>
+      </div>
+    </div>
+  </section>

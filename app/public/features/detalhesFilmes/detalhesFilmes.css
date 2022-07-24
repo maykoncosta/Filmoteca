@@ -12,9 +12,13 @@
 }
 
 .card-text{
-    min-height: 50%;
     max-width: 98%;
+    min-height: 20%;
     text-align: justify;
+}
+
+.sinopse{
+    margin-left: 0px;
 }
 
 .card-elenco{
@@ -30,7 +34,6 @@
 
 .text-elenco{
     margin-top: -10px;
-    text-align: left;
     font-size: small;
     text-align: left;
 }
@@ -46,9 +49,14 @@
     padding: 20px 5px 20px 10px !important;
 }
 
-.elenco-principal{
-    margin-left: 15px;
+.overview-elenco{
+    overflow: visible !important;
 }
 h4{
+    margin-left: 15px;
+    text-align: left;
+}
+
+.card-detalhes{
     text-align: left;
 }

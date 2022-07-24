@@ -31,7 +31,7 @@ angular.module('app').service("FilmeService", function($http, env){
          })
      }
 
-     vm.getFilmePorNome = (nomeFilme, pagina) => {
+     vm.getFilmePorNome = (pagina, nomeFilme) => {
         params["page"] = pagina;
         if(nomeFilme != ""){
             params["query"] = nomeFilme;

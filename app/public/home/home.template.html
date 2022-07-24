@@ -13,14 +13,15 @@
                     <div class="btn-group">
                       <button type="button" 
                       class="btn btn-sm btn-outline-secondary"
-                      ng-click="ctrl.detalhesFilme(filme)">View</button>
+                      ng-click="ctrl.detalhesFilme(filme)">Detalhes</button>
                     </div>
-                    <small class="text-muted">9 mins</small>
                   </div>
                 </div>
               </div>
             </div>
     </div>
 </div>
-<paginacao-app></paginacao-app>
+<paginacao-app get-proximos-filmes="ctrl.getProximosFilmes()"
+get-filmes-anteriores="ctrl.getFilmesAnteriores()"
+primeira-pagina="ctrl.primeiraPagina"></paginacao-app>
 

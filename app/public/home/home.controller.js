@@ -12,9 +12,11 @@ function HomeController($state, filmeService){
     vm.urlImg = "https://image.tmdb.org/t/p/w500";
     vm.nomeFilme = "";
     vm.pagina = 1;
+    vm.primeiraPagina = false;
     vm.filmeId;
 
 vm.getFilmes = () => {
+    vm.pagina = 1;
     filmeService
     .getFilmes()
     .then((response) => {
@@ -40,8 +42,9 @@ vm.getLancamentos = () => {
 }
 
 vm.pesquisarFilme = () => {
+    vm.pagina = 1;
     filmeService
-    .getFilmePorNome(vm.nomeFilme)
+    .getFilmePorNome(vm.pagina, vm.nomeFilme)
     .then((response) => {
         vm.pagina = 1;
         if(vm.nomeFilme == ""){
@@ -55,19 +58,57 @@ vm.pesquisarFilme = () => {
 }
 
 vm.getProximosFilmes = () => {
-    filmeService
-    .getFilmes(vm.pagina)
-    .then((response) => {
-        vm.pagina +=1;
-        if(vm.nomeFilme == ""){
+    vm.pagina +=1;
+    if(vm.pagina >= 2){
+        vm.primeiraPagina = true;
+    }
+    if(vm.nomeFilme != ""){
+        filmeService
+        .getFilmePorNome(vm.pagina, vm.nomeFilme)
+        .then((response) => {
             vm.filmes = response.data.results;
-            console.log("getProximosFilmes");
-        }
-        vm.filmes = response.data.results;
-    })
-    .catch((error) => {
-        console.log(error);
-    })
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }else if(vm.nomeFilme == ""){
+        filmeService
+        .getFilmes(vm.pagina)
+        .then((response) => {
+            vm.filmes = response.data.results;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    
+}
+
+vm.getFilmesAnteriores = () => {
+    vm.pagina -=1;
+    if(vm.pagina == 1){
+        vm.primeiraPagina = false;
+    }
+    if(vm.nomeFilme != ""){
+        filmeService
+        .getFilmePorNome(vm.pagina, vm.nomeFilme)
+        .then((response) => {
+            vm.filmes = response.data.results;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }else if(vm.nomeFilme == ""){
+        filmeService
+        .getFilmes(vm.pagina)
+        .then((response) => {
+            vm.filmes = response.data.results;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }
+    
 }
 
 vm.detalhesFilme = (filme) =>{

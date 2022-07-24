@@ -1,13 +1,14 @@
 <section ng-controller="DetalhesController as ctrl">
   <div class="row mb-2">
     <div class="col-md-12">
-      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static">
-          <strong class="d-inline-block mb-2 text-primary">{{ctrl.filme.tagline}}</strong>
+      <div class="row no-gutters border rounded 
+      overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static card-detalhes">
           <h3 class="mb-0">{{ctrl.filme.title}}</h3>
+          <strong class="d-inline-block mb-2 text-primary">{{ctrl.filme.tagline}}</strong>
           <div class="mb-1 text-muted">{{ctrl.filme.release_date}}</div>
-          <h4>Sinopse:</h4>
-          <p class="card-text mb-auto">{{ctrl.filme.overview}}</p>
+          <h4 class="sinopse">Sinopse:</h4>
+          <p class="card-text mb-auto overview-elenco">{{ctrl.filme.overview}}</p>
           <div>
             <small>Diretor: {{ctrl.diretor}}</small>
           </div>
@@ -20,23 +21,6 @@
   </div>
 </div>
 <!-- Transformar em component -->
-<section>
-  <h3 class="elenco-principal">Elenco principal:</h3>
-  <div class="row">
-    <div ng-repeat="elenco in ctrl.elenco | limitTo : 8" class="card card-elenco">
-      <img ng-src="{{ctrl.urlImg}}{{elenco.profile_path}}" class="card-img-top img-elenco" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{elenco.name}}</h5>
-        <p class="card-text text-elenco">{{elenco.character}}</p>
-      </div>
-    </div>
-  </div>
-</section>
-<div>
-  <br>
-  <h4>Trailer: </h4>
-  <div>
-    <video ng-src="{{ctrl.urlYoutube}}{{}}"></video>
-  </div>
-</div>
+  <elenco-app elenco="ctrl.elenco" url-img="ctrl.urlImg"></elenco-app>
+  <trailer-app url-youtube="ctrl.urlYoutube"></trailer-app>
 </section>

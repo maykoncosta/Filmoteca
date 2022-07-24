@@ -1,11 +1,11 @@
 angular.module('app')
 .controller("DetalhesController", [
-    "$stateParams", 
+    "$sce", 
     "FilmeService",
     DetalhesController,
 ]);
 
-function DetalhesController($stateParams, filmeService){
+function DetalhesController($sce, filmeService){
     const vm = this;
     vm.filme = [];
     vm.creditos = [];
@@ -13,7 +13,8 @@ function DetalhesController($stateParams, filmeService){
     vm.equipeTecnica = [];
     vm.videos = [];
     vm.diretor = "";
-    vm.urlYoutube = "https://www.youtube.com/watch?v=";
+    vm.concYoutube = "";
+    vm.urlYoutube = "";
     vm.filmeId = filmeService.idFilme;
     vm.urlImg = "https://image.tmdb.org/t/p/w500";
 
@@ -46,17 +47,23 @@ function DetalhesController($stateParams, filmeService){
         filmeService
         .getVideos(filmeId)
         .then((response) => {
-            vm.videos = response.data.results;
+            vm.videos = response.data.results[0];
+            vm.concatenarUrlDeVideo();
             console.log(vm.videos)
         })
     }
 
     vm.buscarDiretor = () => {
-        for(var i = 0; i < this.equipeTecnica.length/2; i++){
+        for(var i = 0; i < this.equipeTecnica.length; i++){
             if(vm.equipeTecnica[i].job == "Director"){
                 vm.diretor = vm.equipeTecnica[i].name;
             }
         }
+    }
+
+    vm.concatenarUrlDeVideo = ()=>{
+        vm.concYoutube = "https://www.youtube.com/embed/" + vm.videos.key;
+        vm.urlYoutube = $sce.trustAsResourceUrl(vm.concYoutube);
     }
     vm.teste = () => {
         console.log("filme: ",vm.filmeId);

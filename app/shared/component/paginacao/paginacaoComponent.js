@@ -1,7 +1,9 @@
 angular.module('app')
 .component('paginacaoApp', {
     bindings: {
-        getProximosFilmes: "=",
+        getProximosFilmes: "&",
+        getFilmesAnteriores: "&",
+        primeiraPagina: "=",
     },
     templateUrl: 'shared/component/paginacao/paginacao.html',
     controller: function(){},
