@@ -7,14 +7,14 @@
           <h3 class="mb-0">{{ctrl.filme.title}}</h3>
           <strong class="d-inline-block mb-2 text-primary">{{ctrl.filme.tagline}}</strong>
           <div class="mb-1 text-muted">{{ctrl.filme.release_date}}</div>
-          <h4 class="sinopse">Sinopse:</h4>
+          <h4 class="sinopse" ng-if="ctrl.filme.overview">Sinopse:</h4>
           <p class="card-text mb-auto overview-elenco">{{ctrl.filme.overview}}</p>
           <div>
             <small>Diretor: {{ctrl.diretor}}</small>
           </div>
         </div>
         <span class="col-auto d-none d-lg-block">
-          <img class="img-poster" ng-src="{{ctrl.urlImg}}{{ctrl.filme.poster_path}}" alt="">
+          <img class="img-poster" ng-src="{{ctrl.urlImg}}{{ctrl.filme.poster_path}}" alt="{{ctrl.filme.overview}}">
         </span>
       </div>
     </div>
@@ -22,5 +22,5 @@
 </div>
 <!-- Transformar em component -->
   <elenco-app elenco="ctrl.elenco" url-img="ctrl.urlImg"></elenco-app>
-  <trailer-app url-youtube="ctrl.urlYoutube"></trailer-app>
+  <trailer-app url-youtube="ctrl.urlYoutube" tem-treiler="ctrl.temTreiler"></trailer-app>
 </section>

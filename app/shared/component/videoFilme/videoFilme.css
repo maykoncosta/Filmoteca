@@ -1,9 +1,21 @@
 iframe{
-    width: 90%;
-    height: 100%;
+    width: 80%;
+    height: 90%;
 }
 
 .video-filme{
     text-align: center;
-    height: 600px;
+    height: 550px;
+}
+
+@media screen and (max-width: 900px) {
+    .video-filme{
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .video-filme{
+        height: 250px;
+    }
 }

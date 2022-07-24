@@ -14,6 +14,7 @@ function DetalhesController($sce, filmeService){
     vm.videos = [];
     vm.diretor = "";
     vm.concYoutube = "";
+    vm.temTreiler = false;
     vm.urlYoutube = "";
     vm.filmeId = filmeService.idFilme;
     vm.urlImg = "https://image.tmdb.org/t/p/w500";
@@ -47,14 +48,17 @@ function DetalhesController($sce, filmeService){
         filmeService
         .getVideos(filmeId)
         .then((response) => {
-            vm.videos = response.data.results[0];
-            vm.concatenarUrlDeVideo();
-            console.log(vm.videos)
+            if(response.data.results.length != 0){
+                vm.videos = response.data.results[0];
+                vm.temTreiler = true;
+                console.log(response.data.results)
+                vm.concatenarUrlDeVideo();
+            }
         })
     }
 
     vm.buscarDiretor = () => {
-        for(var i = 0; i < this.equipeTecnica.length; i++){
+        for(var i = 0; i < vm.equipeTecnica.length; i++){
             if(vm.equipeTecnica[i].job == "Director"){
                 vm.diretor = vm.equipeTecnica[i].name;
             }
@@ -65,6 +69,8 @@ function DetalhesController($sce, filmeService){
         vm.concYoutube = "https://www.youtube.com/embed/" + vm.videos.key;
         vm.urlYoutube = $sce.trustAsResourceUrl(vm.concYoutube);
     }
+
+
     vm.teste = () => {
         console.log("filme: ",vm.filmeId);
     }

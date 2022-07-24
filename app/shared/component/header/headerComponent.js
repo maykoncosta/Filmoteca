@@ -4,6 +4,7 @@ angular.module('app')
         pesquisarFilme: "&",
         nomeFilme: "=",
         getFilmes: "&",
+        getMaisClassificados: "&",
     },
     templateUrl: 'shared/component/header/hearder.html',
     controller: function(){},

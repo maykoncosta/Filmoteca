@@ -66,4 +66,14 @@ angular.module('app').service("FilmeService", function($http, env){
              params,
          })
      }
+
+     vm.getTopClassificados = (pagina) => {
+        vm.categoria = "movie";
+        vm.tipo = "top_rated";
+        params["page"] = pagina;
+ 
+         return $http.get(`${urlBase}/${vm.categoria}/${vm.tipo}`,{
+             params,
+         })
+     }
 })

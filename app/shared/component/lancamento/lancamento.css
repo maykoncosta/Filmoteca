@@ -12,7 +12,7 @@
     width: 100%;
 }
 
-.carousel-control-prev {
+.carousel-control-prev {    
     background-color: black !important;
 }
 
@@ -22,4 +22,47 @@
 
 .card-lancamento{
     min-height: 506px;
+}
+
+@media screen and (max-width: 1300px) {
+    .carousel-item img{
+        text-align: center;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .card-lancamento{
+        min-height: 270px;
+    }
+
+    .carousel-caption{
+        margin-bottom: -30px;
+        width: 70%;
+    }
+
+}
+@media screen and (max-width: 700px) {
+    .carousel-item img{
+        text-align: center;
+        max-width: 300px;
+        width: 100%;
+    }
+
+    .card-lancamento{
+        min-height: 200px;
+    }
+
+    .title-lancamento{
+        font-size: medium;
+    }
+
+    .carousel-caption{
+        font-size: small;
+        margin-bottom: -30px;
+        width: 70%;
+    }
+
+    .btn{
+        max-width: 100px !important;
+    }
 }

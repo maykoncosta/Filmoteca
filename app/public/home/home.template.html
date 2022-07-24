@@ -1,18 +1,18 @@
-<lancamento-app></lancamento-app>
+<lancamento-app detalhes-filme="ctrl.detalhesFilmes()"></lancamento-app>
 <div class="album py-5 bg-light">
     <div class="row container">
-            <div class="col-md-3"  
+            <div class="col-md-3 col-sm-4 col-6 col-xl-2"  
             ng-repeat="filme in ctrl.filmes"
             ng-if="filme.poster_path">
               <div class="card mb-4 shadow-sm">
                 <img class="img-card" 
-                ng-src="{{ctrl.urlImg}}{{filme.poster_path}}" >
+                ng-src="{{ctrl.urlImg}}{{filme.poster_path}}" alt="{{filme.overview}}">
                 <div class="card-body">
                   <p class="card-text">{{filme.overview}}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" 
-                      class="btn btn-sm btn-outline-secondary"
+                      class="btn btn-outline-success my-2 my-sm-0"
                       ng-click="ctrl.detalhesFilme(filme)">Detalhes</button>
                     </div>
                   </div>

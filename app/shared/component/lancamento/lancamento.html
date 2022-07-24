@@ -1,13 +1,6 @@
 <div id="myCarousel" class="carousel slide" 
 data-ride="carousel"  
 ng-controller="HomeController as ctrl">
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" 
-      ng-repeat="filme in ctrl.filmesLancamentos | orderBy:'release_date'"
-      data-slide-to="filme" 
-      ng-if="filme.backdrop_path"></li>
-    </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
           <img class="card-lancamento" src="/assets/img/lancamento-2022.jpg" alt="">
@@ -19,12 +12,12 @@ ng-controller="HomeController as ctrl">
         <div class="carousel-item" 
         ng-repeat="filme in ctrl.filmesLancamentos | orderBy:'release_date'" 
         ng-if="filme.backdrop_path">
-          <img ng-src="{{ctrl.urlImg}}{{filme.backdrop_path}}" alt="">
+          <img ng-src="{{ctrl.urlImg}}{{filme.backdrop_path}}" alt="{{filme.overview}}">
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{filme.title}}</h1>
-              <p>{{filme.overview}}</p>
-              <p><a class="btn btn-lg btn-primary" href="#">Ver mais</a></p>
+              <h1 class=" title-lancamento">{{filme.title}}</h1>
+              <p><button class="btn btn-outline-success my-2 my-sm-0" 
+                ng-click="ctrl.detalhesFilme(filme)">Detalhes</button></p>
             </div>
           </div>
         </div>

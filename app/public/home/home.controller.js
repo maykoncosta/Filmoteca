@@ -14,8 +14,10 @@ function HomeController($state, filmeService){
     vm.pagina = 1;
     vm.primeiraPagina = false;
     vm.filmeId;
+    vm.topFilmes = false;
 
 vm.getFilmes = () => {
+    vm.topFilmes = false;
     vm.pagina = 1;
     filmeService
     .getFilmes()
@@ -72,14 +74,7 @@ vm.getProximosFilmes = () => {
             console.log(error);
         })
     }else if(vm.nomeFilme == ""){
-        filmeService
-        .getFilmes(vm.pagina)
-        .then((response) => {
-            vm.filmes = response.data.results;
-        })
-        .catch((error) => {
-            console.log(error);
-        })
+        vm.verificaSeEClassificado();
     }
     
 }
@@ -99,6 +94,23 @@ vm.getFilmesAnteriores = () => {
             console.log(error);
         })
     }else if(vm.nomeFilme == ""){
+        vm.verificaSeEClassificado();
+    }
+    
+}
+
+vm.verificaSeEClassificado = () => {
+    if(vm.topFilmes){
+        filmeService
+        .getTopClassificados(vm.pagina)
+        .then((response) => {
+            vm.filmes = response.data.results;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    }else{
+        console.log(vm.topFIlmes);
         filmeService
         .getFilmes(vm.pagina)
         .then((response) => {
@@ -108,8 +120,21 @@ vm.getFilmesAnteriores = () => {
             console.log(error);
         })
     }
-    
 }
+
+vm.getMaisClassificados = () => {
+    vm.topFilmes = true;
+    vm.pagina = 1;
+    filmeService
+    .getTopClassificados(vm.pagina)
+    .then((response) => {
+        vm.filmes = response.data.results;
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+}
+
 
 vm.detalhesFilme = (filme) =>{
     vm.filmeId = filme.id;
